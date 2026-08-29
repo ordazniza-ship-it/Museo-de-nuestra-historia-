@@ -1,180 +1,988 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>El museo de nosotros ❤️</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0d0812;color:#fff8fb;font-family:Georgia,serif}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:65px 65px;opacity:.07}
-header{text-align:center;min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:40px 20px}
-.ey{letter-spacing:5px;color:#e8c98b;font:12px system-ui}.door{font-size:75px;margin:22px}
-h1{font-size:clamp(42px,9vw,82px);font-weight:400;margin:5px}
-.sub{font:16px system-ui;max-width:700px;margin:18px auto;line-height:1.8;color:#e8dce5}
-nav{position:sticky;top:0;z-index:20;background:#0d0812e8;backdrop-filter:blur(12px);display:flex;gap:7px;overflow:auto;padding:10px;justify-content:center;border-bottom:1px solid #fff2}
-button{background:#ffffff10;border:1px solid #ffffff35;color:white;padding:10px 14px;border-radius:22px;white-space:nowrap}
-.music{position:fixed;right:12px;top:12px;z-index:30}
-main{max-width:1050px;margin:auto;padding:25px 18px}.room{display:none;min-height:75vh;padding-top:25px}
-.room.active{display:block;animation:in .5s}@keyframes in{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
-.title{text-align:center;margin:25px 0 40px}.title h2{font-size:clamp(30px,6vw,48px);font-weight:400;margin:10px}
-.title p{font:15px system-ui;color:#d8cad3;line-height:1.7}
-.card{max-width:790px;margin:25px auto;background:linear-gradient(145deg,#24142c,#170e1e);border:1px solid #ffffff18;border-radius:14px;padding:30px;line-height:1.9;box-shadow:0 20px 60px #0007}
-.gold{color:#e8c98b}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
-.frame{background:#211329;padding:10px;border:1px solid #ffffff1c;border-radius:9px}.frame img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#39273e;border-radius:4px}
-.caption{text-align:center;padding:12px 5px;font:14px system-ui;color:#f4e7ed}
-.letter{background:#fffaf3;color:#392837}.letter h3{text-align:center;color:#74415e;font-size:29px;font-weight:400}
-.secret{border:1px solid #e8c98b;background:radial-gradient(circle,#402046,#170d1c);text-align:center;padding:45px 25px;border-radius:15px;font-size:19px;line-height:1.9}
-.heart{font-size:65px;animation:p 1.7s infinite}@keyframes p{50%{transform:scale(1.12)}}
-.map{display:flex;justify-content:center;gap:20px;align-items:center;flex-wrap:wrap}.pin{padding:18px 22px;border:1px solid #fff3;border-radius:12px;background:#fff1}
-.arrow{font-size:30px;color:#e8c98b}.santo{font-size:clamp(27px,6vw,52px);color:#e8c98b;text-align:center;margin:20px 0}
-footer{text-align:center;color:#9f919c;font:12px system-ui;padding:45px 20px}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#0c0811;
+    color:#fff;
+    font-family:Georgia,serif;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.12;
+    background-image:
+        radial-gradient(circle,#fff 1px,transparent 1px);
+    background-size:70px 70px;
+}
+
+header{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px 20px;
+}
+
+.eyebrow{
+    color:#e6c77b;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:5px;
+}
+
+.heart{
+    font-size:75px;
+    margin:25px;
+    animation:latido 2s infinite;
+}
+
+@keyframes latido{
+    50%{transform:scale(1.12)}
+}
+
+h1{
+    font-size:clamp(45px,10vw,90px);
+    font-weight:normal;
+    margin:0;
+}
+
+.subtitle{
+    max-width:650px;
+    color:#d8ccd5;
+    font-family:Arial,sans-serif;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.enter{
+    margin-top:30px;
+    padding:14px 25px;
+    border:1px solid #e6c77b;
+    border-radius:30px;
+    color:#e6c77b;
+    text-decoration:none;
+    font-family:Arial,sans-serif;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(12,8,17,.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #ffffff20;
+    padding:10px;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+}
+
+nav button{
+    flex-shrink:0;
+    background:#ffffff0d;
+    color:white;
+    border:1px solid #ffffff25;
+    padding:10px 15px;
+    border-radius:25px;
+}
+
+main{
+    max-width:1050px;
+    margin:auto;
+    padding:30px 18px;
+}
+
+.sala{
+    display:none;
+    min-height:80vh;
+    padding:45px 0;
+}
+
+.sala.activa{
+    display:block;
+    animation:entrada .6s ease;
+}
+
+@keyframes entrada{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.titulo{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.titulo h2{
+    font-size:clamp(32px,7vw,55px);
+    font-weight:normal;
+    margin:10px;
+}
+
+.titulo p{
+    color:#cfc2cc;
+    font-family:Arial,sans-serif;
+    line-height:1.7;
+}
+
+.tarjeta{
+    max-width:800px;
+    margin:25px auto;
+    padding:30px;
+    background:linear-gradient(145deg,#26152e,#160d1d);
+    border:1px solid #ffffff1c;
+    border-radius:16px;
+    line-height:1.9;
+    box-shadow:0 20px 60px #0008;
+}
+
+.dorado{
+    color:#e6c77b;
+}
+
+.centro{
+    text-align:center;
+}
+
+.mapa{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
+
+.pin{
+    padding:18px 25px;
+    border:1px solid #ffffff25;
+    border-radius:12px;
+    background:#ffffff09;
+    text-align:center;
+}
+
+.flecha{
+    color:#e6c77b;
+    font-size:30px;
+}
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:18px;
+    margin-top:30px;
+}
+
+.foto{
+    background:#211229;
+    padding:10px;
+    border-radius:12px;
+    border:1px solid #ffffff18;
+}
+
+.foto img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border-radius:7px;
+    display:block;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.foto img:hover{
+    transform:scale(1.025);
+}
+
+.caption{
+    text-align:center;
+    padding:12px 5px 5px;
+    color:#eee0e8;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+}
+
+.spotify{
+    text-align:center;
+    margin:35px auto;
+}
+
+.spotify img{
+    width:min(280px,80%);
+    border-radius:10px;
+    box-shadow:0 15px 40px #0008;
+}
+
+.secreto{
+    padding:50px 25px;
+    text-align:center;
+    border:1px solid #e6c77b;
+    border-radius:18px;
+    background:radial-gradient(circle,#432047,#160b1b);
+    line-height:1.9;
+}
+
+.secreto .gran{
+    font-size:clamp(30px,7vw,55px);
+    color:#e6c77b;
+}
+
+.carta{
+    background:#fffaf1;
+    color:#392735;
+}
+
+.carta h3{
+    text-align:center;
+    color:#75435f;
+    font-size:30px;
+    font-weight:normal;
+}
+
+.carta p{
+    line-height:1.9;
+}
+
+.final{
+    text-align:center;
+    font-size:25px;
+    color:#75435f;
+}
+
+footer{
+    text-align:center;
+    color:#8f828e;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    padding:50px 20px;
+}
+
+#visor{
+    display:none;
+    position:fixed;
+    z-index:100;
+    inset:0;
+    background:#000e;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+#visor img{
+    max-width:95%;
+    max-height:90%;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+#cerrar{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:35px;
+    color:white;
+    cursor:pointer;
+}
+
 </style>
 </head>
+
 <body>
-<button class="music" onclick="music()">♫ Música</button>
-<audio id="a" loop src="audio/musica.mp3"></audio>
 
 <header>
-<div class="ey">UNA HISTORIA QUE MERECÍA SER GUARDADA</div>
-<div class="door">♥</div>
+
+<div class="eyebrow">
+UNA HISTORIA QUE MERECÍA SER GUARDADA
+</div>
+
+<div class="heart">♥</div>
+
 <h1>El museo de nosotros</h1>
-<p class="sub">Jorge, este lugar no guarda obras de arte. Guarda pedacitos de una historia que empezó sin que ninguno de los dos supiera hasta dónde iba a llegar.</p>
-<p class="sub"><b>Entra despacio. Esta historia es nuestra.</b></p>
+
+<p class="subtitle">
+Jorge, este lugar no guarda obras de arte.
+Guarda pedacitos de una historia que empezó sin que ninguno de los dos supiera hasta dónde iba a llegar.
+</p>
+
+<p class="subtitle">
+<b>Entra despacio. Esta historia es nuestra.</b>
+</p>
+
+<a class="enter" href="#museo">
+Entrar al museo ❤️
+</a>
+
 </header>
 
-<nav>
-<button onclick="go('prologo')">Prólogo</button>
-<button onclick="go('bumble')">La última oportunidad</button>
-<button onclick="go('distancia')">La distancia</button>
-<button onclick="go('chiapas')">Fui por ti</button>
-<button onclick="go('cielo')">Nuestro cielo</button>
-<button onclick="go('familias')">Familias</button>
-<button onclick="go('mexico')">México contigo</button>
-<button onclick="go('futuro')">Nuestro futuro</button>
-<button onclick="go('carta')">Final</button>
+
+<nav id="museo">
+
+<button onclick="abrirSala('prologo')">Prólogo</button>
+
+<button onclick="abrirSala('bumble')">
+Bumble
+</button>
+
+<button onclick="abrirSala('distancia')">
+La distancia
+</button>
+
+<button onclick="abrirSala('chiapas')">
+Chiapas
+</button>
+
+<button onclick="abrirSala('cielo')">
+Nuestro cielo
+</button>
+
+<button onclick="abrirSala('familia')">
+Familia
+</button>
+
+<button onclick="abrirSala('mexico')">
+México
+</button>
+
+<button onclick="abrirSala('futuro')">
+2027 💍
+</button>
+
+<button onclick="abrirSala('carta')">
+Final ❤️
+</button>
+
 </nav>
 
+
 <main>
-<section id="prologo" class="room active">
-<div class="title"><h2>Prólogo — Antes de ti</h2><p>Antes de conocerte, yo no sabía que estaba a punto de encontrarte.</p></div>
-<div class="card">
-<p>Un día abrí Bumble buscando conexiones. Salí con algunas personas, pero ninguna historia terminó de convencerme.</p>
-<p>Y cuando ya estaba a nada de rendirme, apareció tu perfil.</p>
-<p class="gold"><b>En mi cabeza pensé: “Si con él tampoco funciona, cierro esto y dejo de esperar a alguien”.</b></p>
-<p>Qué curioso… que aquella última oportunidad terminara siendo tú.</p>
+
+
+<!-- SALA 1 -->
+
+<section id="prologo" class="sala activa">
+
+<div class="titulo">
+
+<h2>Prólogo — Antes de ti</h2>
+
+<p>
+Antes de conocerte, yo no sabía que estaba a punto de encontrarte.
+</p>
+
 </div>
+
+<div class="tarjeta">
+
+<p>
+Un día abrí Bumble buscando conexiones.
+Salí con algunas personas, pero ninguna historia terminó de convencerme.
+</p>
+
+<p>
+Y cuando ya estaba a nada de rendirme, apareció tu perfil.
+</p>
+
+<p class="dorado centro">
+<b>
+En mi cabeza pensé:
+“Si con él tampoco funciona, cierro esto y dejo de esperar a alguien”.
+</b>
+</p>
+
+<p>
+Qué curioso que aquella última oportunidad terminara siendo tú.
+</p>
+
+</div>
+
 </section>
 
-<section id="bumble" class="room">
-<div class="title"><h2>Capítulo I — La última oportunidad</h2><p>Y entonces empezamos a hablar.</p></div>
-<div class="card">
-<p>Lo nuestro no llegó haciendo ruido. Llegó poquito a poquito, con una conexión tranquila, bonita y cada vez más nuestra.</p>
-<p>Sin darnos cuenta, empezamos a formar algo que ninguno de los dos sabía todavía cómo nombrar.</p>
-<p><b>Y mientras yo pensaba que había encontrado a alguien cerca, la vida tenía preparada una pequeña sorpresa…</b></p>
+
+<!-- SALA 2 -->
+
+<section id="bumble" class="sala">
+
+<div class="titulo">
+
+<h2>Capítulo I — La última oportunidad</h2>
+
+<p>
+Y entonces empezamos a hablar.
+</p>
+
 </div>
-<div class="grid">
-<div class="frame"><img src="fotos/01.jpg"><div class="caption">El comienzo.</div></div>
-<div class="frame"><img src="fotos/02.jpg"><div class="caption">Cuando empezamos a encontrarnos.</div></div>
+
+<div class="tarjeta">
+
+<p>
+Lo nuestro no llegó haciendo ruido.
+Llegó poquito a poquito, con una conexión tranquila, bonita y cada vez más nuestra.
+</p>
+
+<p>
+Sin darnos cuenta empezamos a formar algo que ninguno de los dos sabía todavía cómo nombrar.
+</p>
+
+<p>
+<b>
+Y mientras yo pensaba que había encontrado a alguien relativamente cerca,
+la vida tenía preparada una pequeña sorpresa…
+</b>
+</p>
+
 </div>
+
+<div class="galeria">
+
+<div class="foto">
+<img src="1.png" onclick="verFoto(this.src)">
+<div class="caption">El comienzo.</div>
+</div>
+
+<div class="foto">
+<img src="2.png" onclick="verFoto(this.src)">
+<div class="caption">Cuando empezamos a encontrarnos.</div>
+</div>
+
+<div class="foto">
+<img src="3.png" onclick="verFoto(this.src)">
+<div class="caption">Poco a poco, tú.</div>
+</div>
+
+</div>
+
 </section>
 
-<section id="distancia" class="room">
-<div class="title"><h2>Capítulo II — “¿Tuxtla Gutiérrez?”</h2><p>El pequeño detalle que ninguno de los dos había previsto.</p></div>
-<div class="card">
-<p>Yo había viajado a Oaxaca y por eso parecías relativamente cerca. Pero cuando regresé a Texcoco y miré tu ubicación…</p>
-<p class="gold" style="text-align:center;font-size:27px"><b>Tuxtla Gutiérrez, Chiapas.</b></p>
-<p>Y yo pensé: <b>“¿Qué? ¿Y ahora qué va a pasar?”</b></p>
-<div class="map">
-<div class="pin">📍 Texcoco<br>Estado de México</div><div class="arrow">→</div>
-<div class="pin">📍 Tuxtla<br>Chiapas</div>
+
+<!-- SALA 3 -->
+
+<section id="distancia" class="sala">
+
+<div class="titulo">
+
+<h2>Capítulo II — ¿Tuxtla Gutiérrez?</h2>
+
+<p>
+El pequeño detalle que ninguno de los dos había previsto.
+</p>
+
 </div>
-<p>Te pregunté si la distancia importaba. Tú dijiste que no. Y, aunque daba un poquito de miedo, decidimos averiguarlo.</p>
+
+<div class="tarjeta">
+
+<p>
+Cuando regresé a Texcoco miré nuevamente tu ubicación.
+</p>
+
+<p class="dorado centro" style="font-size:28px">
+<b>Tuxtla Gutiérrez, Chiapas.</b>
+</p>
+
+<p>
+Y pensé:
+<b>“¿Qué? ¿Y ahora qué va a pasar?”</b>
+</p>
+
+<div class="mapa">
+
+<div class="pin">
+📍<br>
+<b>Texcoco</b><br>
+Estado de México
 </div>
+
+<div class="flecha">→</div>
+
+<div class="pin">
+📍<br>
+<b>Tuxtla</b><br>
+Chiapas
+</div>
+
+</div>
+
+<p>
+Te pregunté si la distancia importaba.
+Tú dijiste que no.
+Y aunque daba un poquito de miedo, decidimos averiguarlo.
+</p>
+
+</div>
+
+<div class="galeria">
+
+<div class="foto">
+<img src="4.png" onclick="verFoto(this.src)">
+<div class="caption">Dos lugares. Una historia.</div>
+</div>
+
+<div class="foto">
+<img src="5.jpg" onclick="verFoto(this.src)">
+<div class="caption">La distancia nunca tuvo la última palabra.</div>
+</div>
+
+</div>
+
 </section>
 
-<section id="chiapas" class="room">
-<div class="title"><h2>Capítulo III — Entonces fui por ti</h2><p>Hay momentos en los que uno deja de preguntarse “¿y si…?” y simplemente se atreve.</p></div>
-<div class="card">
-<p>Y yo me atreví.</p>
-<p>Hice la maleta, enfrenté mis miedos y viajé a Chiapas para conocerte.</p>
-<p class="gold" style="font-size:25px;text-align:center"><b>Yo fui a encontrarte.</b></p>
-<p>Y después de conocernos a través de una pantalla, finalmente pude verte, abrazarte y pasar contigo casi una semana que se convirtió en uno de los capítulos más importantes de nuestra historia.</p>
+
+<!-- SALA 4 -->
+
+<section id="chiapas" class="sala">
+
+<div class="titulo">
+
+<h2>Capítulo III — Entonces fui por ti</h2>
+
+<p>
+Hay momentos en los que uno deja de preguntarse “¿y si…?”
+y simplemente se atreve.
+</p>
+
 </div>
-<div class="grid">
-<div class="frame"><img src="fotos/03.jpg"><div class="caption">La primera vez que estuvimos juntos.</div></div>
-<div class="frame"><img src="fotos/04.jpg"><div class="caption">Un recuerdo de aquellos días.</div></div>
+
+<div class="tarjeta">
+
+<p>
+Y yo me atreví.
+</p>
+
+<p>
+Hice la maleta, enfrenté mis miedos y viajé a Chiapas para conocerte.
+</p>
+
+<p class="dorado centro" style="font-size:27px">
+<b>Yo fui a encontrarte.</b>
+</p>
+
+<p>
+Después de conocernos a través de una pantalla, finalmente pude verte,
+abrazarte y pasar contigo casi una semana que terminó convirtiéndose
+en uno de los capítulos más importantes de nuestra historia.
+</p>
+
 </div>
+
+<div class="galeria">
+
+<div class="foto">
+<img src="6.png" onclick="verFoto(this.src)">
+<div class="caption">La primera vez que estuvimos juntos.</div>
+</div>
+
+<div class="foto">
+<img src="7.png" onclick="verFoto(this.src)">
+<div class="caption">Nuestro primer encuentro.</div>
+</div>
+
+<div class="foto">
+<img src="8.png" onclick="verFoto(this.src)">
+<div class="caption">Un recuerdo de aquellos días.</div>
+</div>
+
+<div class="foto">
+<img src="9.png" onclick="verFoto(this.src)">
+<div class="caption">Chiapas y nosotros.</div>
+</div>
+
+</div>
+
 </section>
 
-<section id="cielo" class="room">
-<div class="title"><h2>Capítulo IV — Bajo el mismo cielo 🌙</h2><p>Hay regalos que cuestan poco y significan muchísimo.</p></div>
-<div class="card">
-<p>Tú me regalaste un pedacito del cielo: la noche estrellada del día en que nos conocimos, con nuestra fecha y mi nombre.</p>
-<p>Y quizá por eso este detalle tenía que vivir aquí.</p>
-<p class="gold" style="text-align:center;font-size:23px"><b>“Tú me regalaste nuestro cielo.<br>Yo quise guardar aquí un pedacito de él.”</b></p>
-<p style="text-align:center">🎧 <b>Te regalo — Carla Morrison</b></p>
-<p style="text-align:center">Aquí va tu código de Spotify.</p>
+
+<!-- SALA 5 -->
+
+<section id="cielo" class="sala">
+
+<div class="titulo">
+
+<h2>Capítulo IV — Bajo el mismo cielo 🌙</h2>
+
+<p>
+Hay regalos que cuestan poco y significan muchísimo.
+</p>
+
 </div>
+
+<div class="tarjeta">
+
+<p>
+Tú me regalaste un pedacito del cielo:
+la noche estrellada del día en que nos conocimos,
+con nuestra fecha y mi nombre.
+</p>
+
+<p>
+Y quizá por eso este detalle tenía que vivir aquí.
+</p>
+
+<p class="dorado centro" style="font-size:23px">
+<b>
+“Tú me regalaste nuestro cielo.
+<br>
+Yo quise guardar aquí un pedacito de él.”
+</b>
+</p>
+
+<div class="spotify">
+
+<img src="IMG_8075.PNG" onclick="verFoto(this.src)">
+
+<p>
+🎧 <b>Te regalo — Carla Morrison</b>
+</p>
+
+<p>
+Escanéalo y escucha nuestra canción.
+</p>
+
+</div>
+
+</div>
+
 </section>
 
-<section id="familias" class="room">
-<div class="title"><h2>Capítulo V — Ahora también somos familia</h2><p>Porque amar a alguien también es cuidar lo que ama.</p></div>
-<div class="card">
-<p>Conocí a tu familia y poco a poco nuestra relación dejó de ser solamente mensajes y videollamadas. Se volvió vida compartida.</p>
-<p>Y después llegó el momento en que tú viniste a México, conociste a mis papás, a mis tíos y a mi familia materna.</p>
-<p>Me hizo feliz verte llegar con café, libros y detalles para ellos, pendiente de mi familia y de mí.</p>
-<p class="gold"><b>No solamente llegaste a mi vida. Llegaste con cariño a la vida de las personas que amo.</b></p>
+
+<!-- SALA 6 -->
+
+<section id="familia" class="sala">
+
+<div class="titulo">
+
+<h2>Capítulo V — Ahora también somos familia</h2>
+
+<p>
+Porque amar a alguien también es cuidar lo que ama.
+</p>
+
 </div>
-<div class="grid">
-<div class="frame"><img src="fotos/05.jpg"><div class="caption">Nuestra familia.</div></div>
-<div class="frame"><img src="fotos/06.jpg"><div class="caption">Un momento para guardar.</div></div>
+
+<div class="tarjeta">
+
+<p>
+Conocí a tu familia y poco a poco nuestra relación dejó de ser solamente
+mensajes y videollamadas.
+Se volvió vida compartida.
+</p>
+
+<p>
+Y después llegó el momento en que tú viniste a México,
+conociste a mis papás, a mis tíos y a mi familia materna.
+</p>
+
+<p>
+Me hizo feliz verte llegar con café, libros y detalles para ellos,
+pendiente de mi familia y de mí.
+</p>
+
+<p class="dorado">
+<b>
+No solamente llegaste a mi vida.
+Llegaste con cariño a la vida de las personas que amo.
+</b>
+</p>
+
 </div>
+
+<div class="galeria">
+
+<div class="foto">
+<img src="10.png" onclick="verFoto(this.src)">
+<div class="caption">Nuestra familia.</div>
+</div>
+
+<div class="foto">
+<img src="11.png" onclick="verFoto(this.src)">
+<div class="caption">Un momento para guardar.</div>
+</div>
+
+</div>
+
 </section>
 
-<section id="mexico" class="room">
-<div class="title"><h2>Capítulo VI — México contigo 🇲🇽</h2><p>Descubrir lugares contigo hizo que se sintieran todavía más especiales.</p></div>
-<div class="grid">
-<div class="frame"><img src="fotos/07.jpg"><div class="caption">Templo Mayor.</div></div>
-<div class="frame"><img src="fotos/08.jpg"><div class="caption">Nuestro primer estadio.</div></div>
-<div class="frame"><img src="fotos/09.jpg"><div class="caption">Museo Soumaya.</div></div>
-<div class="frame"><img src="fotos/10.jpg"><div class="caption">MUNAL.</div></div>
-<div class="frame"><img src="fotos/11.jpg"><div class="caption">La Villa.</div></div>
-<div class="frame"><img src="fotos/12.jpg"><div class="caption">Nosotros.</div></div>
+
+<!-- SALA 7 -->
+
+<section id="mexico" class="sala">
+
+<div class="titulo">
+
+<h2>Capítulo VI — México contigo 🇲🇽</h2>
+
+<p>
+Descubrir lugares contigo hizo que se sintieran todavía más especiales.
+</p>
+
 </div>
+
+<div class="galeria">
+
+<div class="foto">
+<img src="12.png" onclick="verFoto(this.src)">
+<div class="caption">Templo Mayor.</div>
+</div>
+
+<div class="foto">
+<img src="13.png" onclick="verFoto(this.src)">
+<div class="caption">Nuestro primer estadio.</div>
+</div>
+
+<div class="foto">
+<img src="14.png" onclick="verFoto(this.src)">
+<div class="caption">Museo Soumaya.</div>
+</div>
+
+<div class="foto">
+<img src="15.png" onclick="verFoto(this.src)">
+<div class="caption">MUNAL.</div>
+</div>
+
+<div class="foto">
+<img src="16.png" onclick="verFoto(this.src)">
+<div class="caption">La Villa.</div>
+</div>
+
+<div class="foto">
+<img src="17.png" onclick="verFoto(this.src)">
+<div class="caption">Nosotros.</div>
+</div>
+
+</div>
+
 </section>
 
-<section id="futuro" class="room">
-<div class="title"><h2>Capítulo VII — Lo que todavía no existe</h2><p>Pero que ya vive en nuestros sueños.</p></div>
-<div class="secret">
-<div class="heart">♥</div>
-<p>Hay fotografías que todavía no podemos poner en este museo.</p>
-<p>Porque todavía no han sucedido.</p>
-<p class="gold" style="font-size:25px"><b>Pero hay sueños que empiezan mucho antes de convertirse en recuerdos.</b></p>
-<div class="santo">Santo Domingo, Oaxaca<br>💍 Diciembre de 2027</div>
-<p>Mi catedral favorita. Un lugar que algún día quiero mirar de una manera completamente distinta: contigo, sabiendo que estamos comenzando otra etapa de nuestra historia.</p>
+
+<!-- SALA 8 -->
+
+<section id="futuro" class="sala">
+
+<div class="titulo">
+
+<h2>Capítulo VII — Lo que todavía no existe</h2>
+
+<p>
+Pero que ya vive en nuestros sueños.
+</p>
+
 </div>
+
+<div class="secreto">
+
+<div class="gran">♥</div>
+
+<p>
+Hay fotografías que todavía no podemos poner en este museo.
+</p>
+
+<p>
+Porque todavía no han sucedido.
+</p>
+
+<p class="dorado" style="font-size:24px">
+
+<b>
+Pero hay sueños que empiezan mucho antes
+de convertirse en recuerdos.
+</b>
+
+</p>
+
+<div class="dorado" style="font-size:clamp(28px,6vw,52px);margin:30px 0">
+
+Santo Domingo, Oaxaca
+
+<br>
+
+💍
+
+<br>
+
+Diciembre de 2027
+
+</div>
+
+<p>
+Mi catedral favorita.
+Un lugar que algún día quiero mirar de una manera completamente distinta:
+contigo, sabiendo que estamos comenzando otra etapa de nuestra historia.
+</p>
+
+</div>
+
 </section>
 
-<section id="carta" class="room">
-<div class="title"><h2>La última sala</h2><p>Pero no el último capítulo.</p></div>
-<div class="letter card">
-<h3>Para el amor de mi vida</h3>
-<p>Mi amor:</p>
-<p>Si llegaste hasta aquí, quiero que sepas que todo este pequeño museo nació de una sola idea: <b>quiero guardar nuestra historia.</b></p>
-<p>Quiero guardar nuestras fotografías, nuestras risas, nuestras videollamadas, nuestros viajes, los días fáciles y también aquellos en los que tuvimos que aprender a querernos desde lejos.</p>
-<p>Gracias por aparecer justo cuando yo estaba a punto de rendirme. Gracias por atreverte conmigo a descubrir si la distancia podía convertirse en un puente.</p>
-<p>Hoy cumples 31 años y yo solamente quiero celebrar algo más grande que un cumpleaños: <b>celebrar que existes y que, entre tantas personas y tantos caminos posibles, nuestros caminos se encontraron.</b></p>
-<p>Te amo por quien eres, por lo que hemos construido y por todo aquello que todavía nos falta vivir.</p>
-<p style="text-align:center;font-size:24px"><b>Este museo termina aquí.<br>Nuestra historia, no.</b></p>
-<p style="text-align:center;font-size:21px">Feliz cumpleaños, mi amor.<br>Te amo muchísimo. ❤️<br><br><b>Niza</b></p>
+
+<!-- SALA FINAL -->
+
+<section id="carta" class="sala">
+
+<div class="titulo">
+
+<h2>La última sala</h2>
+
+<p>
+Pero no el último capítulo.
+</p>
+
 </div>
+
+<div class="tarjeta carta">
+
+<h3>
+Para el amor de mi vida
+</h3>
+
+<p>
+Mi amor:
+</p>
+
+<p>
+Si llegaste hasta aquí, quiero que sepas que todo este pequeño museo
+nació de una sola idea:
+<b>quiero guardar nuestra historia.</b>
+</p>
+
+<p>
+Quiero guardar nuestras fotografías, nuestras risas,
+nuestras videollamadas, nuestros viajes,
+los días fáciles y también aquellos en los que tuvimos que aprender
+a querernos desde lejos.
+</p>
+
+<p>
+Gracias por aparecer justo cuando yo estaba a punto de rendirme.
+Gracias por atreverte conmigo a descubrir si la distancia podía
+convertirse en un puente.
+</p>
+
+<p>
+Hoy cumples 31 años y yo solamente quiero celebrar algo más grande
+que un cumpleaños:
+<b>celebrar que existes y que, entre tantas personas y tantos caminos
+posibles, nuestros caminos se encontraron.</b>
+</p>
+
+<p>
+Te amo por quien eres, por lo que hemos construido
+y por todo aquello que todavía nos falta vivir.
+</p>
+
+<p class="final">
+
+<b>
+Este museo termina aquí.
+<br>
+Nuestra historia, no.
+</b>
+
+</p>
+
+<p class="centro">
+
+Feliz cumpleaños, mi amor. ❤️
+<br><br>
+
+Te amo muchísimo.
+<br><br>
+
+<b>Niza</b>
+
+</p>
+
+</div>
+
 </section>
+
+
 </main>
 
-<footer>Hecho con amor para Jorge, por Niza. ❤️<br>Una historia que todavía se está escribiendo.</footer>
+
+<footer>
+
+Hecho con amor para Jorge, por Niza. ❤️
+<br>
+Una historia que todavía se está escribiendo.
+
+</footer>
+
+
+<!-- VISOR DE FOTOS -->
+
+<div id="visor" onclick="cerrarFoto()">
+
+<span id="cerrar">×</span>
+
+<img id="fotoGrande">
+
+</div>
+
+
 <script>
-const rooms=document.querySelectorAll('.room');
-function go(id){rooms.forEach(r=>r.classList.toggle('active',r.id===id));scrollTo({top:0,behavior:'smooth'})}
-function music(){const a=document.getElementById('a');a.paused?a.play().catch(()=>alert('Agrega audio/musica.mp3')):a.pause()}
+
+function abrirSala(id){
+
+    const salas=document.querySelectorAll(".sala");
+
+    salas.forEach(function(sala){
+
+        sala.classList.remove("activa");
+
+    });
+
+    document.getElementById(id).classList.add("activa");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function verFoto(src){
+
+    document.getElementById("fotoGrande").src=src;
+
+    document.getElementById("visor").style.display="flex";
+
+}
+
+
+function cerrarFoto(){
+
+    document.getElementById("visor").style.display="none";
+
+}
+
 </script>
-</body></html>
+
+</body>
+</html>
